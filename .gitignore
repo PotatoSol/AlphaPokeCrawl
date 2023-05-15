@@ -1,0 +1,36 @@
+# Unity specific
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+
+# Build artifacts
+*.exe
+*.dll
+*.pdb
+*.asmdef
+
+# Generated asset files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb.meta
+
+# Cache and meta files
+/[Ll]ibrary/**/*
+/*.asset.meta
+/[Oo]bj/**/*
+*.csproj.meta
+*.unityproj.meta
+*.sln.meta
+*.asmdef.meta
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
