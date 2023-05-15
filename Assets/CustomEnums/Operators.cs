@@ -1,0 +1,1 @@
+public enum Operator {opEqual, opGreaterThan, opLessThan, opGreaterThanOrEqualTo, opLessThanOrEqualTo}
