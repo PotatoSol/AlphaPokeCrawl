@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PokeCrawl;
 using UnityEngine;
 
 public class PokemonController : MonoBehaviour
@@ -9,7 +10,9 @@ public class PokemonController : MonoBehaviour
     private float _health = 10f;
     private float _speed = 0.25f;
     private float _x, _y;
-    public Type[] Types = new Type[]{};
+
+    //some variable for PowerPoints should be here, too lazy to implement right now
+    public List<PokeType> PokeTypes = new List<PokeType>();
 
     private Move[] PossibleMoveList; //List of POSSIBLE moves used by the CURRENT pokemon instance
     //private Command[] CommandList; //List of POSSIBLE commands usable by the CURRENt pokemon
@@ -86,7 +89,11 @@ public class PokemonController : MonoBehaviour
     }
 
     private void UseMove(Move inputMove){
-        if(inputMove.CheckRequirements);
+        if(inputMove.CheckRequirements()){
+            //
+        }
+        //else
+
     }
 
     private void UpdateIdleSprite(Direction newDirection) //is there a way to change this so that it can be reused for every animation

@@ -1,23 +1,24 @@
+using PokeCrawl;
 public class Move
 {
     public string Name { get; set; }
     public float Power { get; set; }
     public float Accuracy { get; set; } //despite being a float, keep values from 0-100, to 2 decimal places
-    public Type Type { get; set;}
+    public PokeType ThisMoveType { get; set;}
 
     public Move(){
         Name = "Struggle";
         Power = 1f;
         Accuracy = 100f;
-        Type = Type.Normal;
+        ThisMoveType = PokeType.Normal;
     }
 
-    public Move(string name, float power, float accuracy, Type type)
+    public Move(string name, float power, float accuracy, PokeType thisMoveType)
     {
         Name = name;
         Power = power;
         Accuracy = accuracy;
-        Type = type;
+        ThisMoveType = thisMoveType;
     }
 
     public bool CheckRequirements(){ //method for running the checks to see if this move is doable

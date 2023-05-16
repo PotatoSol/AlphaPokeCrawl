@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using PokeCrawl;
 
 public class TackleMove : Move
 {
@@ -13,7 +14,7 @@ public class TackleMove : Move
         Name = "Tackle";
         Power = 10f;
         Accuracy = 100f;
-        Type = Type.Normal;
+        ThisMoveType = PokeType.Normal;
         Range = 1.9f;
     }
 
@@ -26,21 +27,31 @@ public class TackleMove : Move
         MoveUser = InputUser;
         MoveTarget = InputTarget;
         DoMove();
+
+        return true;
     }
 
+    // public bool CheckDistance(PokemonController user, PokemonController target){
+    //     if( Math.Sqrt(((Math.Pow(user.GetCoords()[0] - target.GetCoords()[0], 2))) + Math.Pow((user.GetCoords[1] - target.GetCoords[1])),2) < Range) {
+    //         return true;
+    //     }
+    //     else return false;
+    // }
+
     public bool CheckDistance(PokemonController user, PokemonController target){
-        if( Math.sqrt(((user.GetCoords()[0] - target.GetCoords()[0])^2) + (user.GetCoords[1] - target.GetCoords[1])^2 ) < Range) {
+        if (Math.Sqrt(Math.Pow(user.GetCoords()[0] - target.GetCoords()[0], 2) + Math.Pow(user.GetCoords()[1] - target.GetCoords()[1], 2)) < Range){
             return true;
-        }
-        else return false;
+        } else { return false; }
     }
+
 
     public float CalculateDamage(){
         //
         float CalcPower = Power;
-        if(MoveUser.Type == this.Type){
-
+        if(MoveUser.PokeTypes.Contains((PokeType) this.ThisMoveType)){
+            //do something
         }
+        return 1.0f;
     }
 
     public void DoMove(){

@@ -1,1 +1,4 @@
-public enum CharacterState { Idle }
+namespace PokeCrawl{
+    public enum CharacterState { Idle }
+
+}
