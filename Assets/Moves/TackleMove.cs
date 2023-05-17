@@ -20,7 +20,7 @@ public class TackleMove : Move
 
     //overloaded method that all moves should have
     public bool CheckRequirements(PokemonController InputUser, PokemonController InputTarget){ 
-        
+        //check the distance, then check if the target.....is....
         if(!CheckDistance(InputUser, InputTarget)){ //if it's too far then leave
             return false;
         }
@@ -30,13 +30,6 @@ public class TackleMove : Move
 
         return true;
     }
-
-    // public bool CheckDistance(PokemonController user, PokemonController target){
-    //     if( Math.Sqrt(((Math.Pow(user.GetCoords()[0] - target.GetCoords()[0], 2))) + Math.Pow((user.GetCoords[1] - target.GetCoords[1])),2) < Range) {
-    //         return true;
-    //     }
-    //     else return false;
-    // }
 
     public bool CheckDistance(PokemonController user, PokemonController target){
         if (Math.Sqrt(Math.Pow(user.GetCoords()[0] - target.GetCoords()[0], 2) + Math.Pow(user.GetCoords()[1] - target.GetCoords()[1], 2)) < Range){

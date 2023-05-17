@@ -10,5 +10,8 @@ public class BulbasaurController : PokemonController{
 
     public BulbasaurController(){
         PokeTypes.Add(PokeType.Grass);
+        
     }
+
+    //need some method to do an animation
 }

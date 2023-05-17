@@ -18,6 +18,8 @@ public class BasicCommand : MonoBehaviour {
     Owner Target;
     Operator CommandOperator;
 
+    BasicCondition ConditionStatement;
+
     public BasicCommand(Owner inputTarget, Operator inputOperator){
         Target = inputTarget;
         CommandOperator = inputOperator;

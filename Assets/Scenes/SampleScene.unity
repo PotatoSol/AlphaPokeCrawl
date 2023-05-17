@@ -202,7 +202,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300674537}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: c8d19051807114548ac9ecf75b051e74, type: 2}
   m_CullingMode: 0
@@ -242,7 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552082c309bcc4ac7aaf8c334b7726e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentDirection: 0
+  animator: {fileID: 300674539}
+  PokeTypes: 03000000
+  _currentDirection: 4
   _currentCharacterState: 0
   northSprite: {fileID: 21300000, guid: 9339c3b3d8679467a926114bbe68ce95, type: 3}
   northeastSprite: {fileID: 21300000, guid: fb0fe64a2de994ed6ae7f9b8181db244, type: 3}
@@ -252,6 +254,14 @@ MonoBehaviour:
   southwestSprite: {fileID: 21300000, guid: 5980cc9109f764891a076072c0a3c938, type: 3}
   westSprite: {fileID: 21300000, guid: 84db63b7861c747fab50d9de71e03d4b, type: 3}
   northwestSprite: {fileID: 21300000, guid: 109c7e1ba1d9443ae9f34b230143a0fd, type: 3}
+  northTackleSprite: {fileID: 0}
+  northeastTackleSprite: {fileID: 0}
+  eastTackleSprite: {fileID: 0}
+  southeastTackleSprite: {fileID: 0}
+  southTackleSprite: {fileID: 0}
+  southwestTackleSprite: {fileID: 0}
+  westTackleSprite: {fileID: 0}
+  northwestTackleSprite: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class BasicCondition : MonoBehaviour {
 
-    public BasicCondition(){
+    public PokemonController conUser;
+    public BasicCondition(PokemonController inputUser){
+        conUser = inputUser;
+    }
 
+    public bool CheckCondition(){
+        return false;
     }
 }
