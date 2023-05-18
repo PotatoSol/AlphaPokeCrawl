@@ -11,7 +11,7 @@ public class PokemonController : MonoBehaviour
     private float _speed = 0.25f;
     private float _x, _y;
 
-    //public PokemonController aggressionTarget; //lock onto a target
+    public PokemonController aggressionTarget; //lock onto a target
 
     private int directionAsInt = 0; //0 is north, 1 is northeast, 2 is east, etc.
 
@@ -85,7 +85,10 @@ public class PokemonController : MonoBehaviour
     private void RandomlyChooseDirectionToMove() //unnecessary now
     {
         // Randomly select a direction
-        Direction newDirection = (Direction)Random.Range(0, 8);
+        int randomNumber = Random.Range(0,8);
+        directionAsInt = randomNumber;
+        Direction newDirection = (Direction)randomNumber;
+
         Walk(newDirection);
     }
 
@@ -101,14 +104,67 @@ public class PokemonController : MonoBehaviour
             //
         }
         //else
-
     }
 
+    public Direction GetDirectionOfTarget(PokemonController target){ //0 is north, 1 is northeast, 2 is east, etc
+        Vector2 currentPosition = transform.position;
+        Vector2 targetPosition = target.transform.position;
+        Vector2 directionVector = targetPosition - currentPosition;
+
+        float angle = Mathf.Atan2(directionVector.x, directionVector.y) * Mathf.Rad2Deg;
+
+        // Normalize the angle to a positive value between 0 and 360 degrees
+        if (angle < 0)
+        {
+            angle += 360f;
+        }
+
+        // Calculate the direction based on the angle
+        float sectorSize = 360f / 8f; // Divide the circle into 8 equal sectors (N, NE, E, SE, S, SW, W, NW)
+        int sector = Mathf.RoundToInt(angle / sectorSize);
+        Debug.Log("sector: " + sector);
+        Direction direction;
+        switch (sector)
+        {
+        case 0:
+            direction = Direction.North;
+            break;
+        case 1:
+            direction = Direction.NorthEast;
+            break;
+        case 2:
+            direction = Direction.East;
+            break;
+        case 3:
+            direction = Direction.SouthEast;
+            break;
+        case 4:
+            direction = Direction.South;
+            break;
+        case 5:
+            direction = Direction.SouthWest;
+            break;
+        case 6:
+            direction = Direction.West;
+            break;
+        case 7:
+            direction = Direction.NorthWest;
+            break;
+        default:
+            direction = Direction.North; // Default to North if the angle doesn't fit into any sector
+            break;
+    }
+        Debug.Log("Direction: " + direction);
+
+        return direction;
+    }
+    public void SetAggressionTarget(PokemonController input){
+        aggressionTarget = input;
+    }
     private void UpdateIdleSprite(Direction newDirection) //is there a way to change this so that it can be reused for every animation
     {
-        Debug.Log("Enter update Idle sprite");
-        Debug.Log(newDirection);
-        Debug.Log(_spriteRenderer);
+        animator.SetTrigger("IsIdle");
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         switch (newDirection)
         {
             case Direction.North:
@@ -139,7 +195,9 @@ public class PokemonController : MonoBehaviour
     }
 
     public void PlayAttackAnimation(){
-        switch (_currentDirection)
+        Debug.Log("attacking!");
+        animator.ResetTrigger("IsIdle");
+        switch (GetDirectionOfTarget(aggressionTarget))
         {
             case Direction.North:
                 directionAsInt = 0;
@@ -233,5 +291,6 @@ public class PokemonController : MonoBehaviour
         animator.SetInteger("Direction", directionAsInt);
         _x = transform.position.x; //sets coordinates of current object
         _y = transform.position.y; 
+
     }
 }

@@ -19,7 +19,9 @@ public class AdjacentCondition : BasicCondition
         PokemonController[] allPokemon = FindObjectsOfType<PokemonController>();
         foreach (PokemonController aPokemon in allPokemon){
             if (aPokemon != conUser && conUser.GetDistanceTo(aPokemon) <= 1.9f){
+                Debug.Log("Attacking!");
                 conTarget = aPokemon;
+                conUser.aggressionTarget = aPokemon;
                 return true;
             }
         }
