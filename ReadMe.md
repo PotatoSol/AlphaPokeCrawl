@@ -49,6 +49,7 @@ _The MVP for this project will be:_
 * _Properly calculate damage_
 * _Implement Health_
 * _Implement Fainting_
+* _Fix walk cycles (Currently using Idle animation)_
 
 * _Add more Pokemon_
 * _Add more Moves_
