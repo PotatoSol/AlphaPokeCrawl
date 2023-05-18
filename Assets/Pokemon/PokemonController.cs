@@ -106,6 +106,9 @@ public class PokemonController : MonoBehaviour
 
     private void UpdateIdleSprite(Direction newDirection) //is there a way to change this so that it can be reused for every animation
     {
+        Debug.Log("Enter update Idle sprite");
+        Debug.Log(newDirection);
+        Debug.Log(_spriteRenderer);
         switch (newDirection)
         {
             case Direction.North:
@@ -182,7 +185,8 @@ public class PokemonController : MonoBehaviour
     }
 
     public float[] GetCoords(){
-        return new float[]{_x, _y};
+        Vector3 currentPos = transform.position;
+        return new float[]{currentPos.x, currentPos.y};
     }
 
     public float GetDistanceTo(PokemonController targetPokemon){
@@ -222,10 +226,12 @@ public class PokemonController : MonoBehaviour
         _y = transform.position.y; 
 
         animator.SetInteger("Direction", directionAsInt);
-        InvokeRepeating("GoThroughCommands", 1f, 0.5f); // Invoke RandomlyChooseDirectionToMove() every 0.2 seconds
+        InvokeRepeating("GoThroughCommands", 3f, 1f); // Invoke RandomlyChooseDirectionToMove() every 1.1 seconds
     }
 
     void Update(){
         animator.SetInteger("Direction", directionAsInt);
+        _x = transform.position.x; //sets coordinates of current object
+        _y = transform.position.y; 
     }
 }

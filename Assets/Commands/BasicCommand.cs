@@ -25,7 +25,6 @@ public class BasicCommand : ScriptableObject {
     }
 
     public void DoCommand(){
-        Debug.Log("executing DoCommand()");
         PokemonMove.CheckRequirements();
         PokemonMove.DoMove();
     }

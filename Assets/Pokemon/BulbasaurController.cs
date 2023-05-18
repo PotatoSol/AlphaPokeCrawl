@@ -13,6 +13,7 @@ public class BulbasaurController : PokemonController{
     }
 
     public override void DoSetUp(){
+        CommandList = new List<BasicCommand>(); //I do not know why, but theres a null object added if i do not do this. 
         base.DoSetUp();
         PokeTypes.Add(PokeType.Grass);
         AdjacentCondition newAdjCondition = new AdjacentCondition(this);
@@ -22,12 +23,7 @@ public class BulbasaurController : PokemonController{
         newTackleMove.MoveTarget = newAdjCondition.conTarget;
         newAdjCondition.conMove = newTackleMove;
         BasicCommand TackleAdjacentPokemonCommand = new BasicCommand(this, newAdjCondition, newTackleMove);
-        Debug.Log("CommandList count:");//delete
-        Debug.Log(CommandList.Count);//delete
-        Debug.Log("Adding to command list...."); //delete
         CommandList.Add(TackleAdjacentPokemonCommand);
-        Debug.Log(CommandList[0]);
-        Debug.Log(TackleAdjacentPokemonCommand);
     }
 
     void Start(){

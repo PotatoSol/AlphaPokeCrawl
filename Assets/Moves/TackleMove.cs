@@ -39,9 +39,18 @@ public class TackleMove : Move
     }
 
     public bool CheckDistance(PokemonController user, PokemonController target){
-        if (Math.Sqrt(Math.Pow(user.GetCoords()[0] - target.GetCoords()[0], 2) + Math.Pow(user.GetCoords()[1] - target.GetCoords()[1], 2)) < Range){
+        double distanceBetween = Math.Sqrt(Math.Pow(user.GetCoords()[0] - target.GetCoords()[0], 2) + Math.Pow(user.GetCoords()[1] - target.GetCoords()[1], 2));
+        Debug.Log("User coords:  " + user.GetCoords()[0] + user.GetCoords()[1]);
+        Debug.Log("Target coords: " + target.GetCoords()[0] + target.GetCoords()[1]);
+        Debug.Log("Distance between: " + distanceBetween);
+        Debug.Log("Range: " + Range);
+        if (distanceBetween < Range){
+            Debug.Log("Within distance!");
             return true;
-        } else { return false; }
+        } else { 
+            Debug.Log("Too far!");
+            return false; 
+        }
     }
 
 
@@ -51,6 +60,8 @@ public class TackleMove : Move
         if(MoveUser.PokeTypes.Contains((PokeType) this.ThisMoveType)){
             //do something
         }
+        Debug.Log("Damaging!");
+        MoveUser.PlayAttackAnimation();
         return 1.0f;
     }
 
