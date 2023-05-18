@@ -18,14 +18,21 @@ public class TackleMove : Move
         Range = 1.9f;
     }
 
-    //overloaded method that all moves should have
-    public bool CheckRequirements(PokemonController InputUser, PokemonController InputTarget){ 
-        //check the distance, then check if the target.....is....
-        if(!CheckDistance(InputUser, InputTarget)){ //if it's too far then leave
+    //overridden method that all moves should have
+    public override bool CheckRequirements(){ 
+
+        if(MoveUser == null){
+            Debug.Log("NO MOVEUSER");
             return false;
         }
-        MoveUser = InputUser;
-        MoveTarget = InputTarget;
+        if(MoveTarget == null){
+            Debug.Log("NO MOVETARGET");
+            return false;
+        }
+        //check the distance, then check if the target.....is....
+        if(!CheckDistance(MoveUser, MoveTarget)){ //if it's too far then leave
+            return false;
+        }
         DoMove();
 
         return true;
@@ -47,7 +54,7 @@ public class TackleMove : Move
         return 1.0f;
     }
 
-    public void DoMove(){
+    public override void DoMove(){
         //Do the move
         CalculateDamage();
     }

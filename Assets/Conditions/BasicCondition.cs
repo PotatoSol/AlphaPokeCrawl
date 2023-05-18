@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class BasicCondition : MonoBehaviour {
+public class BasicCondition : ScriptableObject {
 
     public PokemonController conUser;
     public BasicCondition(PokemonController inputUser){
         conUser = inputUser;
     }
 
-    public bool CheckCondition(){
+    public virtual bool CheckCondition(){
         return false;
     }
 }

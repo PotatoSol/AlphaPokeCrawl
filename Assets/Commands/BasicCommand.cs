@@ -1,49 +1,32 @@
 using PokeCrawl;
 using UnityEngine;
 
-//this will be passed into the pokemon
-//so it must be all encompassing
-//therefore we need
-//if "enemy" "is" "near" then "tackle"
-//[target]
-//[operator]
-//[value]
-//[move]
-public class BasicCommand : MonoBehaviour {
+public class BasicCommand : ScriptableObject {
     //Gambit structure is 
     //IF [CONDITION] THEN [ACTION]
-    //so
-    //something like [enemy] is [equality] [check]
 
-    Owner Target;
-    Operator CommandOperator;
+    PokemonController CommandOwner;
 
     BasicCondition ConditionStatement;
 
-    public BasicCommand(Owner inputTarget, Operator inputOperator){
-        Target = inputTarget;
-        CommandOperator = inputOperator;
+    Move PokemonMove;
+
+    public BasicCommand(PokemonController inputOwner, BasicCondition inputStatement, Move inputMove){
+        CommandOwner = inputOwner;
+        ConditionStatement = inputStatement;
+        PokemonMove = inputMove;
     }
 
-    public void CheckOperator(Owner inputTarget, Operator inputOperator){
-        switch (CommandOperator){
-            case Operator.opEqual:
-            //do this if ==
-            break;
-            case Operator.opGreaterThanOrEqualTo:
-            //do this if >=
-            break;
-            case Operator.opLessThanOrEqualTo:
-            //do this if <=
-            break;
-            case Operator.opGreaterThan:
-            //do this if >
-            break;
-            case Operator.opLessThan:
-            //do this if <
-            break;
-            default:
-            break;
-        }
+    public string print(){ //debug commands
+        return "wpoqmewlkr";
+    }
+    public bool IsValidCommand(){
+        return ConditionStatement.CheckCondition();
+    }
+
+    public void DoCommand(){
+        Debug.Log("executing DoCommand()");
+        PokemonMove.CheckRequirements();
+        PokemonMove.DoMove();
     }
 }

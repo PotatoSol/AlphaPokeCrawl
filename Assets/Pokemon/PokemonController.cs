@@ -22,7 +22,8 @@ public class PokemonController : MonoBehaviour
     public List<PokeType> PokeTypes = new List<PokeType>();
 
     //private Move[] PossibleMoveList; //List of POSSIBLE moves used by the CURRENT pokemon instance
-    private List<BasicCommand> CommandList = new List<BasicCommand>(); //List of POSSIBLE commands usable by the CURRENT pokemon
+    [SerializeField]
+    public List<BasicCommand> CommandList = new List<BasicCommand>(); //List of POSSIBLE commands usable by the CURRENT pokemon
     //private Command[] Commands; //List of player-programmed commands assigned to this pokemon 
 
     private Owner pokeOwner = Owner.Wild;
@@ -185,20 +186,43 @@ public class PokemonController : MonoBehaviour
     }
 
     public float GetDistanceTo(PokemonController targetPokemon){
-        return Math.Sqrt(Math.Pow(user.GetCoords()[0] - target.GetCoords()[0], 2) + Math.Pow(user.GetCoords()[1] - target.GetCoords()[1], 2));
+        float returnAmount = Mathf.Sqrt(Mathf.Pow(this.GetCoords()[0] - targetPokemon.GetCoords()[0], 2) + Mathf.Pow(this.GetCoords()[1] - targetPokemon.GetCoords()[1], 2));
+        return returnAmount;
+    }
+
+    public void GoThroughCommands(){
+        bool commandDone = false;
+        foreach (BasicCommand aCommand in CommandList){
+            if(aCommand == null){
+                Debug.Log("aCommand is null!");
+                return;
+            }
+            if(aCommand.IsValidCommand()){
+                aCommand.DoCommand();
+                commandDone = true;
+            } 
+        }
+        if(commandDone == false){
+            RandomlyChooseDirectionToMove();
+        }
+    }
+
+    public virtual void DoSetUp(){
+        //to be overloaded 
     }
 
     //=========================================================
     // Start is called before the first frame update
     void Start()
     {
+        this.DoSetUp();
         animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>(); //assigns spriterenderer based on current object
         _x = transform.position.x; //sets coordinates of current object
         _y = transform.position.y; 
 
         animator.SetInteger("Direction", directionAsInt);
-        //InvokeRepeating("RandomlyChooseDirectionToMove", 1f, 0.5f); // Invoke RandomlyChooseDirectionToMove() every 0.2 seconds
+        InvokeRepeating("GoThroughCommands", 1f, 0.5f); // Invoke RandomlyChooseDirectionToMove() every 0.2 seconds
     }
 
     void Update(){

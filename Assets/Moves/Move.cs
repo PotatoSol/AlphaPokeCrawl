@@ -21,10 +21,13 @@ public class Move
         ThisMoveType = thisMoveType;
     }
 
-    public bool CheckRequirements(){ //method for running the checks to see if this move is doable
+    public virtual bool CheckRequirements(){ //method for running the checks to see if this move is doable
         return false; //if the move is doable, return true - this is an empty base class so always return false since it should never work
     }
 
+    public virtual void DoMove(){
+        //empty method to be overloaded
+    }
     /*
     public virtual void DoMove(PokemonController attacker, PokemonController defender)
     {
