@@ -107,6 +107,7 @@ public class PokemonController : MonoBehaviour
     }
 
     public Direction GetDirectionOfTarget(PokemonController target){ //0 is north, 1 is northeast, 2 is east, etc
+        Debug.Log("Enter GetDirectionOfTarget");
         Vector2 currentPosition = transform.position;
         Vector2 targetPosition = target.transform.position;
         Vector2 directionVector = targetPosition - currentPosition;
@@ -163,6 +164,7 @@ public class PokemonController : MonoBehaviour
     }
     private void UpdateIdleSprite(Direction newDirection) //is there a way to change this so that it can be reused for every animation
     {
+        Debug.Log("Enter UpdateIdleSprite");
         animator.SetTrigger("IsIdle");
         _spriteRenderer = GetComponent<SpriteRenderer>();
         switch (newDirection)
@@ -253,6 +255,7 @@ public class PokemonController : MonoBehaviour
     }
 
     public void GoThroughCommands(){
+        Debug.Log("Enter GoThroughCommands");
         bool commandDone = false;
         foreach (BasicCommand aCommand in CommandList){
             if(aCommand == null){

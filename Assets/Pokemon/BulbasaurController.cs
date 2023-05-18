@@ -13,7 +13,7 @@ public class BulbasaurController : PokemonController{
     }
 
     public override void DoSetUp(){
-        CommandList = new List<BasicCommand>(); //I do not know why, but theres a null object added if i do not do this. 
+        CommandList = new List<BasicCommand>(); //I do not know why, but theres a null object added if i do not do this.  
         base.DoSetUp();
         PokeTypes.Add(PokeType.Grass);
         AdjacentCondition newAdjCondition = new AdjacentCondition(this);
