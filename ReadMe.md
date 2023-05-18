@@ -38,6 +38,11 @@ _The MVP for this project will be:_
 ## Known Bugs
 
 * _Pokemon currently move before updating which direction they are facing_
+* _Occasionally have to quit and restart Unity, due to 
+
+ >SerializedObjectNotCreateableException: Object at index 0 is null._
+
+* _Unable to reproduce bug, and it's only occasional, error points to Unity engine code, not my code, not sure what to do_
 
 ## TODO
 
