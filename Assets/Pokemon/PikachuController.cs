@@ -6,8 +6,6 @@ using System.Collections.Generic;
 
 //**ALERT** HARD COPIED FROM BULBASAUR - MAKE NECESSARY ADJUSTMENTS
 public class PikachuController : PokemonController{
-
-    [Header("TackleSprites")]
     public Sprite northTackleSprite, northeastTackleSprite, eastTackleSprite, southeastTackleSprite, southTackleSprite, southwestTackleSprite, westTackleSprite, northwestTackleSprite;
 
     public PikachuController(){
