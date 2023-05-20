@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PokemonController : MonoBehaviour
 {
+    private float _level = 3f;
     private float _attack = .1f;
     private float _defense = .1f;
     private float _health = 10f;
@@ -242,6 +243,10 @@ public class PokemonController : MonoBehaviour
                 //animator.SetTrigger("NorthWestAttackTrigger");
                 break;
         }
+    }
+
+    public void TakeDamage(float DamageDone){ //reuse this for gaining health i guess
+        _health = (float)System.Math.Round(_health - DamageDone, 2);
     }
 
     public float[] GetCoords(){

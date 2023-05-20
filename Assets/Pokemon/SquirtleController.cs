@@ -16,7 +16,7 @@ public class SquirtleController : PokemonController{
     public override void DoSetUp(){
         CommandList = new List<BasicCommand>(); //I do not know why, but theres a null object added if i do not do this.  
         base.DoSetUp();
-        PokeTypes.Add(PokeType.Grass);
+        PokeTypes.Add(PokeType.Water);
         AdjacentCondition newAdjCondition = new AdjacentCondition(this);
         newAdjCondition.CheckCondition();//simply gets the first pokemon in the list that's close...might need to fix this
         TackleMove newTackleMove = new TackleMove();
