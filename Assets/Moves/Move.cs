@@ -50,7 +50,7 @@ public class Move
             }
 
             //FIRE TYPE MOVES
-            if(ThisMoveType == PokeType.Fire){
+            else if(ThisMoveType == PokeType.Fire){
                 if(targetType == PokeType.Grass || targetType == PokeType.Ice || targetType == PokeType.Bug || targetType == PokeType.Steel){
                     returnMod *= 0.5f;
                 } else if(targetType == PokeType.Fire || targetType == PokeType.Water || targetType == PokeType.Rock || targetType == PokeType.Dragon){
@@ -59,7 +59,7 @@ public class Move
             }
 
             //WATER TYPE MOVES
-            if(ThisMoveType == PokeType.Water){
+            else if(ThisMoveType == PokeType.Water){
                 if(targetType == PokeType.Water || targetType == PokeType.Grass || targetType == PokeType.Dragon){
                     returnMod *= 0.5f;
                 } else if(targetType == PokeType.Fire || targetType == PokeType.Ground || targetType == PokeType.Rock){
@@ -68,7 +68,7 @@ public class Move
             }
 
             //GRASS TYPE MOVES
-            if(ThisMoveType == PokeType.Grass){
+            else if(ThisMoveType == PokeType.Grass){
                 if(targetType == PokeType.Fire || targetType == PokeType.Grass || targetType == PokeType.Poison || targetType == PokeType.Flying || targetType == PokeType.Bug || targetType == PokeType.Dragon || targetType == PokeType.Steel){
                     returnMod *= 0.5f;
                 } else if(targetType == PokeType.Water || targetType == PokeType.Ground || targetType == PokeType.Rock){
@@ -77,7 +77,7 @@ public class Move
             }
 
             //ELECTRIC TYPE MOVES
-            if(ThisMoveType == PokeType.Electric){
+            else if(ThisMoveType == PokeType.Electric){
                 if(targetType == PokeType.Ground){
                     return 0;
                 } else if(targetType == PokeType.Grass || targetType == PokeType.Electric || targetType == PokeType.Dragon){
@@ -88,7 +88,7 @@ public class Move
             }
 
             //ICE TYPE MOVES
-            if(ThisMoveType == PokeType.Ice){
+            else if(ThisMoveType == PokeType.Ice){
                 if(targetType == PokeType.Fire || targetType == PokeType.Water || targetType == PokeType.Ice || targetType == PokeType.Steel){
                     returnMod *= 0.5f;
                 } else if (targetType == PokeType.Grass || targetType == PokeType.Ground || targetType == PokeType.Flying || targetType == PokeType.Dragon){
@@ -97,7 +97,7 @@ public class Move
             }
 
             //FIGHTING TYPE MOVES
-            if(ThisMoveType == PokeType.Fighting){
+            else if(ThisMoveType == PokeType.Fighting){
                 if(targetType == PokeType.Ghost){
                     return 0;
                 } else if(targetType == PokeType.Poison || targetType == PokeType.Flying || targetType == PokeType.Psychic || targetType == PokeType.Bug || targetType == PokeType.Fairy){
@@ -108,7 +108,7 @@ public class Move
             }
 
             //POISON TYPE MOVES
-            if(ThisMoveType == PokeType.Poison){
+            else if(ThisMoveType == PokeType.Poison){
                 if(targetType == PokeType.Steel){
                     return 0;
                 } else if(targetType == PokeType.Poison || targetType == PokeType.Ground || targetType == PokeType.Rock || targetType == PokeType.Ghost){
@@ -119,7 +119,7 @@ public class Move
             }
 
             //GROUND TYPE MOVES
-            if(ThisMoveType == PokeType.Ground){
+            else if(ThisMoveType == PokeType.Ground){
                 if(targetType == PokeType.Flying){
                     return 0;
                 } else if (targetType == PokeType.Grass || targetType == PokeType.Bug){
@@ -130,7 +130,7 @@ public class Move
             }
 
             //FLYING TYPE MOVES
-            if(ThisMoveType == PokeType.Flying){
+            else if(ThisMoveType == PokeType.Flying){
                 if(targetType == PokeType.Electric || targetType == PokeType.Rock || targetType == PokeType.Steel){
                     returnMod *= 0.5f;
                 } else if (targetType == PokeType.Grass || targetType == PokeType.Fighting || targetType == PokeType.Bug){
@@ -139,7 +139,7 @@ public class Move
             }
 
             //PSYCHIC TYPE MOVES
-            if(ThisMoveType == PokeType.Psychic){
+            else if(ThisMoveType == PokeType.Psychic){
                 if(targetType == PokeType.Dark){
                     return 0.f;
                 } else if(targetType == PokeType.Psychic || targetType == PokeType.Steel){
@@ -150,7 +150,7 @@ public class Move
             }
 
             //BUG TYPE MOVES
-            if(ThisMoveType == PokeType.Bug){
+            else if(ThisMoveType == PokeType.Bug){
                 if(targetType == PokeType.Fire || targetType == PokeType.Fighting || targetType == PokeType.Poison || targetType == PokeType.Flying || targetType == PokeType.Ghost || targetType == PokeType.Steel || targetType == PokeType.Fairy){
                     returnMod *= 0.5f;
                 } else if (targetType == PokeType.Grass || targetType == PokeType.Psychic || targetType == PokeType.Dark){
@@ -159,7 +159,63 @@ public class Move
             }
 
             //ROCK TYPE MOVES
-            
+            else if(ThisMoveType == PokeType.Rock){
+                if(targetType == PokeType.Fighting || targetType == PokeType.Ground || targetType == PokeType.Steel){
+                    returnMod *= 0.5f;
+                } else if (targetType == PokeType.Fire || targetType == PokeType.Ice || targetType == PokeType.Flying || targetType == PokeType.Bug){
+                    returnMod *= 0.5f;
+                }
+            }
+
+            //GHOST TYPE MOVES
+            else if(ThisMoveType == PokeType.Ghost){
+                if(targetType == PokeType.Normal){
+                    return 0.f;
+                } else if (targetType == PokeType.Dark){
+                    returnMod = 0.5f;
+                } else if (targetType == PokeType.Psychic || targetType == PokeType.Ghost){
+                    returnMod = 0.5f;
+                }
+            }
+
+            //DRAGON TYPE MOVES
+            else if(ThisMoveType == PokeType.Dragon){
+                if(targetType == PokeType.Fairy){
+                    returnMod *= 0.f;
+                } else if (targetType == PokeType.Steel){
+                    returnMod *= 0.5f;
+                } else if (targetType == PokeType.Dragon){
+                    returnMod *= 2.0f;
+                }
+            }
+
+            //DARK TYPE MOVES
+            else if(ThisMoveType == PokeType.Dark){
+                if(targetType == PokeType.Fighting || targetType == PokeType.Dark || targetType == PokeType.Fairy){
+                    returMod *= 0.5f;
+                } else if (targetType == PokeType.Psychic || targetType == PokeType.Ghost){
+                    returnMod *= 0.5f;
+                }
+            }
+
+            //STEEL TYPE MOVES
+            else if(ThisMoveType == PokeType.Steel){
+                if(targetType == PokeType.Fire || targetType == PokeType.Water || targetType == PokeType.Electric || targetType == PokeType. Steel){
+                    returnMod *= 0.5f;
+                } else if (targetType == PokeType.Ice || targetType == PokeType.Rock || targetType == PokeType.Fairy){
+                    returnMod *= 2.0f;
+                }
+            }
+
+            //FAIRY TYPE MOVES
+            else if(ThisMoveType == PokeType.Fairy){
+                if(targetType == PokeType.Fire || targetType == PokeType.Poison || targetType == PokeType.Steel){
+                    returnMod *= 0.5f;
+                } else if (targetType == PokeType.Fighting || targetType == PokeType.Dragon || targetType == PokeType.Dark){
+                    returnMod *= 2.0f;
+                }
+            }
+
         }
         return returnMod; 
     }
