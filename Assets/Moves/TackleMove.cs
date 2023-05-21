@@ -44,16 +44,10 @@ public class TackleMove : Move
         }
     }
 
-    public float CalculateDamage(){
-        //
-        float CalcPower = Power;
-
-        //calculate STAB
-        if(MoveUser.PokeTypes.Contains((PokeType) this.ThisMoveType)){
-            CalcPower *= 1.5f;
-        }
+    public override float CalculateDamage(){
         
-        MoveUser.PlayAttackAnimation();
+        float CalcPower = Power;
+        float damageModifier = this.GetDamageModifier();
         return CalcPower;
     }
 
