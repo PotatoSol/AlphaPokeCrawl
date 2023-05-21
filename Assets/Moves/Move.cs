@@ -28,6 +28,8 @@ public class Move
         ThisMoveType = thisMoveType;
     }
 
+
+    //Todo: Research Hashmaps more and recreate this using hashmaps.
     public float GetDamageModifier(){
         float returnMod = 1.0f;
         if(MoveUser == null || MoveTarget == null || ThisMoveType == null){
@@ -121,18 +123,18 @@ public class Move
                 if(targetType == PokeType.Flying){
                     return 0;
                 } else if (targetType == PokeType.Grass || targetType == PokeType.Bug){
-                    returnMod = 0.5f;
+                    returnMod *= 0.5f;
                 } else if (targetType == PokeType.Fire || targetType == PokeType.Electric || targetType == PokeType.Poison || targetType == PokeType.Rock || targetType == PokeType.Steel){
-                    returnMod = 2.0f;
+                    returnMod *= 2.0f;
                 }
             }
 
             //FLYING TYPE MOVES
             if(ThisMoveType == PokeType.Flying){
                 if(targetType == PokeType.Electric || targetType == PokeType.Rock || targetType == PokeType.Steel){
-                    returnMod = 0.5f;
+                    returnMod *= 0.5f;
                 } else if (targetType == PokeType.Grass || targetType == PokeType.Fighting || targetType == PokeType.Bug){
-                    returnMod = 2.0f;
+                    returnMod *= 2.0f;
                 }
             }
 
@@ -141,14 +143,23 @@ public class Move
                 if(targetType == PokeType.Dark){
                     return 0.f;
                 } else if(targetType == PokeType.Psychic || targetType == PokeType.Steel){
-                    returnMod = 0.5f;
+                    returnMod *= 0.5f;
                 } else if(targetType == PokeType.Fighting || targetType == PokeType.Poison){
-                    returnMod = 2.0f;
+                    returnMod *= 2.0f;
                 }
             }
 
             //BUG TYPE MOVES
+            if(ThisMoveType == PokeType.Bug){
+                if(targetType == PokeType.Fire || targetType == PokeType.Fighting || targetType == PokeType.Poison || targetType == PokeType.Flying || targetType == PokeType.Ghost || targetType == PokeType.Steel || targetType == PokeType.Fairy){
+                    returnMod *= 0.5f;
+                } else if (targetType == PokeType.Grass || targetType == PokeType.Psychic || targetType == PokeType.Dark){
+                    returnMod *= 2.0f;
+                } 
+            }
 
+            //ROCK TYPE MOVES
+            
         }
         return returnMod; 
     }
