@@ -7,7 +7,7 @@ public class TackleMove : Move
     public TackleMove() 
     {
         Name = "Tackle";
-        Power = 10f;
+        Power = 40f;
         Accuracy = 100f;
         ThisMoveType = PokeType.Normal;
         Range = 1.9f;
@@ -45,14 +45,27 @@ public class TackleMove : Move
     }
 
     public override float CalculateDamage(){
-        
-        float CalcPower = Power;
-        float damageModifier = this.GetDamageModifier();
+        float LEVEL = MoveUser._level;
+        float POWER = Power;
+        float ATTACK = MoveUser._attack;
+        float DEFENSE = MoveTarget._defense;
+        float CRITICAL;
+        System.Random rng = new System.Random();
+        if(rng.NextDouble() > .9){
+            CRITICAL = 1.5f;
+        } else { CRITICAL = 1.0f; }
+        float RANDOM = (float) (rng.NextDouble() * (1.0 - 0.85) + 0.85);
+        float CalcPower = (((((((2 * LEVEL) / 5 ) + 2 ) * POWER * (ATTACK / DEFENSE)) / 50) + 2) * CRITICAL * RANDOM );
+
+        //RANDOM = Random multiplier between .85 and 1, rounded down to nearest int
         return CalcPower;
     }
 
     public override void DoMove(){
         //Do the move
-        CalculateDamage();
+        float storeDamage = CalculateDamage();
+        Debug.Log(storeDamage);
+        MoveTarget._health -= storeDamage;
+        //Time.timeScale = 0;
     }
 }

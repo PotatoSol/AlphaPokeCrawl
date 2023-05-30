@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PokemonController : MonoBehaviour
 {
-    private float _level = 3f;
-    private float _attack = .1f;
-    private float _defense = .1f;
-    private float _health = 10f;
-    private float _speed = 0.25f;
-    private float _x, _y;
+    public float _level = 3f;
+    public float _attack = .1f;
+    public float _defense = .1f;
+    public float _health = 1000f;
+    public float _speed = 0.25f;
+    public float _x, _y;
 
     public PokemonController aggressionTarget; //lock onto a target
 
@@ -101,6 +101,9 @@ public class PokemonController : MonoBehaviour
     }
 
     private void UseMove(Move inputMove){
+        if(aggressionTarget){
+            float dmgMod = inputMove.GetDamageModifier();
+        }
         if(inputMove.CheckRequirements()){
             //
         }
